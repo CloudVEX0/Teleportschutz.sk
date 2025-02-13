@@ -1,0 +1,34 @@
+on teleport:
+    set {teleportschutz.%player%} to 15
+    send action bar "&3&lTELEPORTSCHUTZ &8× &7Du hast ein Teleport Schutz von &315 &7Sekunden&8!" to player
+    while {teleportschutz.%player%} > 0:
+        wait 1 second
+        decrease {teleportschutz.%player%} by 1
+        send action bar "&3&lTELEPORTSCHUTZ &8× &7Du hast ein Teleport Schutz von &3%{teleportschutz.%player%}% &7Sekunden&8!" to player
+    delete {teleportschutz.%player%}
+    send action bar "&3&lTELEPORTSCHUTZ &8× &cDein Teleport Schutz ist nun abgelaufen!" to player
+
+on damage:
+    victim is a player
+    {teleportschutz.%victim%} is set
+    cancel event
+    # send "&3&lTELEPORTSCHUTZ &8× &7Du kannst aktuell keinen Schaden erhalten! Dein Teleportschutz ist aktiv." to victim
+
+# Bei denn command unten bitte nichts ändern da es ein regelbruch wäre!
+# bitte nicht sagen das es dein Skript ist da es sonst auch ein regelbruch wäre!
+
+command /teleportsystem:teleportsystem:
+    trigger:
+        send "&3&lSkript info:"
+        send "&7Skript Name&8: &3TeleportSchutzSystem"
+        send "&7Skript Version&8: &31.0 - 1.21"
+        send "&7Skript Ersteller&8: &3JavaSyntaxReboot"
+        send "&7Support Discord&8: &3https://discord.gg/mAmdTVuR"
+
+command /teleportsystem:info:
+    trigger:
+        send "&3&lSkript info:"
+        send "&7Skript Name&8: &3TeleportSchutzSystem"
+        send "&7Skript Version&8: &31.0 - 1.21"
+        send "&7Skript Ersteller&8: &3JavaSyntaxReboot"
+        send "&7Support Discord&8: &3https://discord.gg/mAmdTVuR"
